@@ -1,0 +1,19 @@
+{
+  "name": "react-ya-form",
+  "description": "Yust another form for react",
+  "main": "",
+  "authors": [
+    "Florian Rüberg"
+  ],
+  "license": "UNLICENSED",
+  "keywords": [
+    "Form"
+  ],
+  "moduleType": [],
+  "homepage": "https://github.com/fru/react-ja-form",
+  "private": true,
+  "dependencies": {
+    "react": "0.13.3",
+    "bootstrap-sass-official": "3.3.5"
+  }
+}

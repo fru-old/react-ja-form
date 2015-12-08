@@ -1,0 +1,19 @@
+{
+  "name": "react-ja-form",
+  "version": "0.0.1",
+  "description": "",
+  "author": "DIS",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-typescript": "^2.10.0",
+    "gulp-browserify": "^0.5.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-jshint": "^2.0.0",
+    "jshint-stylish": "^2.1.0"
+  }
+}
