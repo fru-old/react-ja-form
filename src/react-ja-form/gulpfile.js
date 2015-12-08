@@ -10,12 +10,13 @@ var gulp = require('gulp'),
     typescript = require('gulp-typescript'),
 	browserify = require('gulp-browserify'),
 	sass = require('gulp-sass'),
+    concat = require('gulp-concat'),
 	sourcemaps = require('gulp-sourcemaps'),
 	livereload = require('gulp-livereload');
 
 var watch = {
 	scripts: ['./scripts/**/*.tsx', './scripts/**/*.ts'],
-	styles: './sytles/**/*.scss'
+	styles: './styles/**/*.scss'
 };
 
 	
@@ -40,7 +41,7 @@ gulp.task('script-typescript', function () {
 gulp.task('script', ['script-typescript'], function () {
     return gulp.src('./wwwroot/scripts/react-ja-form.js')
         .pipe(browserify())
-        .pipe(gulp.dest('./wwwroot/react-ja-form.js'))
+        .pipe(gulp.dest('./wwwroot'))
         .pipe(livereload());
 });
 
@@ -53,6 +54,8 @@ gulp.task('sass', function () {
 		.pipe(sass().on('error', sass.logError))
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest('./wwwroot/styles'))
+        .pipe(concat('react-ja-form.css'))
+        .pipe(gulp.dest('./wwwroot'))
 		.pipe(livereload());
 });
 
