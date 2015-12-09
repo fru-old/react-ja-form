@@ -16,10 +16,11 @@ var gulp = require('gulp'),
 
 var watch = {
 	scripts: ['./scripts/**/*.tsx', './scripts/**/*.ts'],
-	styles: './styles/**/*.scss'
+	styles: './styles/**/*.scss',
+	html: './wwwroot/examples/**/*.html'
 };
 
-	
+
 // TYPESCRIPT
 	
 var cache = typescript.createProject({
@@ -66,9 +67,15 @@ gulp.task('watch', function () {
     livereload.listen({ start: true, port: 34834 });
     gulp.watch(watch.styles, ['sass']);
     gulp.watch(watch.scripts, ['script']);
+    gulp.watch(watch.html, ['html-reload']);
+});
+
+gulp.task('html-reload', function () {
+    gulp.src(watch.html).pipe(livereload());
 });
 
 
 // DEFAULT
 
 gulp.task('default', ['script', 'sass', 'watch']);
+

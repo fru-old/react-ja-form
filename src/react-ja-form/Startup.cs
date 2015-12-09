@@ -21,11 +21,12 @@ namespace react_ya_form
         public void Configure(IApplicationBuilder app)
         {
             app.UseIISPlatformHandler();
-
-            app.Run(async (context) =>
+            app.UseStaticFiles();
+            app.Run(context =>
             {
-                await context.Response.WriteAsync("Hello World!");
-            });
+                context.Response.Redirect( "/examples/helloWorld.html" );
+                return Task.FromResult<object>( null );
+            } );
         }
 
         // Entry point for the application.
