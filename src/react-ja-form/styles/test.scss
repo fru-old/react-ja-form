@@ -1,3 +1,20 @@
-﻿.test {
-    color: green;
+﻿
+.ja-form {
+    .progress {
+        display: table;
+        min-width: 100%;
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: table-row;
+            text-align: center;
+
+            li {
+                display: table-cell;
+                white-space: nowrap;
+            }
+        }
+    }
 }
+
+

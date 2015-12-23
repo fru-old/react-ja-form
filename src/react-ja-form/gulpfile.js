@@ -12,13 +12,42 @@ var gulp = require('gulp'),
 	sass = require('gulp-sass'),
     concat = require('gulp-concat'),
 	sourcemaps = require('gulp-sourcemaps'),
-	livereload = require('gulp-livereload');
+	livereload = require('gulp-livereload'),
+	uglify = require('gulp-uglify');
 
 var watch = {
 	scripts: ['./scripts/**/*.tsx', './scripts/**/*.ts'],
 	styles: './styles/**/*.scss',
-	html: './wwwroot/examples/**/*.html'
+	html: './wwwroot/examples/**/*.html',
 };
+
+var scriptRequirements = [
+    './node_modules/react/dist/react-with-addons.min.js',
+    './node_modules/react-dom/dist/react-dom.min.js',
+    './node_modules/react-select/node_modules/react-input-autosize/dist/react-input-autosize.min.js',
+    './node_modules/react-select/node_modules/classnames/index.js',
+    './node_modules/react-select/dist/react-select.min.js',
+    './node_modules/react-maskedinput/dist/react-maskedinput.min.js'
+];
+
+var styleRequirements = [
+    './node_modules/react-select/dist/react-select.css'
+];
+
+
+// BUNDLE REQUIREMENTS
+
+gulp.task('script-requirements', function () {
+    return gulp.src(scriptRequirements)
+      .pipe(concat('react-ja-form-requirements.js'))
+      .pipe(gulp.dest('./wwwroot/scripts'));
+});
+
+gulp.task('style-requirements', function () {
+    return gulp.src(styleRequirements)
+      .pipe(concat('react-ja-form-requirements.css'))
+      .pipe(gulp.dest('./wwwroot/styles'));
+});
 
 
 // TYPESCRIPT
@@ -77,5 +106,5 @@ gulp.task('html-reload', function () {
 
 // DEFAULT
 
-gulp.task('default', ['script', 'sass', 'watch']);
+gulp.task('default', ['script', 'sass', 'style-requirements', 'script-requirements', 'watch']);
 
