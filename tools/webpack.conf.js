@@ -40,7 +40,7 @@ function options(babelPlugins, webpackPlugins, postLoaders, reloadEntries, langu
 			module: {
 				loaders: [{
 					test: /\.s?css$/,
-					loaders: ['style-loader', 'css-loader', 'postcss-loader'],
+					loaders: ["style", "css", "sass"]
 				},{
 					test: /\.html$/,
 					loaders: ['react-templates-loader']
@@ -56,12 +56,6 @@ function options(babelPlugins, webpackPlugins, postLoaders, reloadEntries, langu
 					include: [path.join(__dirname, '../lib'), path.join(__dirname, '../test')]
 				}],
 				postLoaders: postLoaders
-			},
-			postcss: function plugins(bundler) {
-				return [
-					require('postcss-import')({ addDependencyTo: bundler }),
-					require('precss')()
-				];
 			},
 			plugins: [new I18nPlugin(languages[language])].concat(webpackPlugins),
 			devtool: devtool,
